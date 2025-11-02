@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sección del banner */
+#banner {
+    height: 60vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner h1 {
+    position: absolute;
+    top: 20px;
+    z-index: 10;
+    color: #e0d5d5;
+    text-align: center;
+}
+
+#three-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Sección de tarjetas */
+#cards-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    min-height: 40vh;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 18rem;
+}
+
+.card-img-top {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+}
+
+.card-body {
+    background-color: #495057;
+    color: white;
+    padding: 1rem;
+}
