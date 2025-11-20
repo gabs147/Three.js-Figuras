@@ -1,26 +1,35 @@
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById('three-container').appendChild(renderer.domElement);
 
-// Crear las figuras
+// Crear las figuras para el banner
 const geometryCubo = new THREE.BoxGeometry(1, 1, 1);
 const geometryCilindro = new THREE.CylinderGeometry(0.5, 0.5, 1, 32);
 const geometryEsfera = new THREE.SphereGeometry(0.7, 32, 16);
 
-const materialCubo = new THREE.MeshBasicMaterial({ color: 0x1FBCFF });
-const materialCilindro = new THREE.MeshBasicMaterial({ color: 0x2A37F4 });
-const materialEsfera = new THREE.MeshBasicMaterial({ color: 0x783AE4 });
+const materialCubo = new THREE.MeshBasicMaterial({ color: 0x6C63FF });
+const materialCilindro = new THREE.MeshBasicMaterial({ color: 0xFF6584 });
+const materialEsfera = new THREE.MeshBasicMaterial({ color: 0x4A44C6 });
 
 const cubo = new THREE.Mesh(geometryCubo, materialCubo);
 const cilindro = new THREE.Mesh(geometryCilindro, materialCilindro);
 const esfera = new THREE.Mesh(geometryEsfera, materialEsfera);
 
-cubo.position.x = -2;
+// ESCALAR LAS FIGURAS DEL BANNER
+cubo.scale.set(1.5, 1.5, 1.5);
+cilindro.scale.set(1.5, 1.5, 1.5);
+esfera.scale.set(1.5, 1.5, 1.5);
+
+cubo.position.x = -3;
 cilindro.position.x = 0;
-esfera.position.x = 2;
+esfera.position.x = 3;
+
+cubo.position.y = 0.7;
+cilindro.position.y = 0.7;
+esfera.position.y = 0.7;
 
 scene.add(cubo);
 scene.add(cilindro);
@@ -59,7 +68,7 @@ sceneEsfera.add(esferaTarjeta);
 const cameraTarjeta = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 cameraTarjeta.position.z = 3;
 
-
+// Animación
 function animate() {
     requestAnimationFrame(animate);
     
@@ -94,7 +103,7 @@ animate();
 
 // Ajustar al cambiar tamaño de ventana
 window.addEventListener('resize', function() {
-    camera.aspect = window.innerWidth / (window.innerHeight * 0.6);
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight * 0.6);
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
